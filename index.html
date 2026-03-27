@@ -133,7 +133,7 @@
       border-left:3px solid transparent;
       cursor:pointer; transition:background .2s, border-color .2s;
     }
-    .tab-item:hover { background:rgba(255,255,255,.06); }
+    .tab-item:hover { background:var(--teal-dk); }
     .tab-item.active { background:var(--teal-dk); border-left-color:#fff; }
 
     /* ─── DANS ─── */
@@ -449,15 +449,15 @@
         <img src="images/yoga.jpg" alt="Kinderyoga les" loading="lazy">
       </div>
       <div class="tabs-menu">
-        <div class="tab-item active">
+        <div class="tab-item active" onclick="activateTab(this)">
           <h3 class="h4">Quality time</h3>
           <p class="body-rg">Een kostbaar uur waarin je volledig aanwezig bent met je kind, zonder afleiding of haast.</p>
         </div>
-        <div class="tab-item">
+        <div class="tab-item" onclick="activateTab(this)">
           <h3 class="h4">Ontspanning</h3>
           <p class="body-rg">Samen bewegen, spelen en ontdekken terwijl jullie allebei rust en plezier ervaren.</p>
         </div>
-        <div class="tab-item">
+        <div class="tab-item" onclick="activateTab(this)">
           <h3 class="h4">Verbinding</h3>
           <p class="body-rg">Creëer bijzondere momenten waarin jullie samen groeien en je innerlijke kind geraakt wordt.</p>
         </div>
@@ -739,6 +739,12 @@
   }
 </script>
 <script>
+  function activateTab(el) {
+    el.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+  }
+</script>
+<script>
   document.addEventListener('DOMContentLoaded', function() {
 
     // Hamburger menu
@@ -757,13 +763,6 @@
         hamburger.setAttribute('aria-expanded', false);
       }
     });
-
-    // Tab lessen
-    document.querySelectorAll('.tab-item').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        tab.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
-          t.classList.remove('active');
-        });
         tab.classList.add('active');
       });
     });
