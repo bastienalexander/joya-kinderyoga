@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joya Kinderyoga</title>
+  <meta name="description" content="Yoga en ontspanning voor jou en je peuter. Elke zaterdag in Amsterdam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Varela+Round&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif; background: #005f68; color: #fff; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+
+    :root {
+      --teal:     #005f68;
+      --teal-dk:  #004c53;
+      --navy:     #002629;
+      --coral:    #d96a67;
+      --coral-dk: #ad5452;
+      --white:    #ffffff;
+      --black:    #080b08;
+      --nav-h:    72px;
+      --pad:      64px;
+      --sec:      112px;
+      --r:        16px;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .vr { font-family: 'Varela Round', sans-serif; }
+    h1,.h1 { font-family:'Varela Round',sans-serif; font-size:72px; line-height:1.2; }
+    h2,.h2 { font-family:'Varela Round',sans-serif; font-size:52px; line-height:1.2; }
+    .h4 { font-family:'Varela Round',sans-serif; font-size:36px; line-height:1.4; }
+    .h5 { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; }
+    .h6 { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.4; }
+    .body-md { font-size:18px; line-height:1.6; }
+    .body-rg { font-size:16px; line-height:1.6; }
+    .body-sm { font-size:14px; line-height:1.6; }
+    .body-xs { font-size:12px; line-height:1.6; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width:1280px; margin:0 auto; padding:0 var(--pad); width:100%; }
+    .section   { padding:var(--sec) 0; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 24px; border-radius:6px; border:1px solid transparent;
+      font-size:16px; font-weight:500; line-height:1.6; white-space:nowrap;
+      font-family:'Poppins',sans-serif; cursor:pointer; transition:opacity .15s;
+    }
+    .btn { transition:background .15s, border-color .15s, color .15s; }
+    /* Witte gevulde knop → teal gevuld op hover (zoals Figma) */
+    .btn-wf:hover  { background:var(--teal); border-color:#fff; color:#fff; }
+    /* Witte omlijning → licht wit gloed op hover */
+    .btn-wg:hover  { background:rgba(255,255,255,.12); }
+    /* Teal gevuld → donker teal op hover */
+    .btn-tf:hover  { background:var(--teal-dk); border-color:var(--teal-dk); }
+    .btn-wf  { background:#fff; color:var(--black); border-color:#fff; }
+    .btn-wg  { background:transparent; color:#fff; border-color:#fff; }
+    .btn-tf  { background:var(--teal); color:#fff; border-color:var(--teal); }
+    .btn-sm  { padding:8px 20px; }
+    .btn-full { width:100%; justify-content:center; }
+
+    /* ════════════════════════════════════
+       NAVBAR  — fixed bovenaan
+    ════════════════════════════════════ */
+    nav.site-nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      height:var(--nav-h); background:var(--teal);
+      display:flex; align-items:center;
+    }
+    nav.site-nav .container {
+      display:flex; align-items:center; justify-content:space-between; width:100%;
+    }
+    .nav-logo { display:flex; align-items:center; line-height:0; }
+    .nav-logo svg { height:46px; width:auto; }
+    .nav-center {
+      display:flex; gap:32px; list-style:none; align-items:center;
+      font-size:16px; color:#fff;
+    }
+    .nav-center a { color:#fff; }
+    .nav-right { display:flex; align-items:center; gap:32px; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position:relative; height:100vh; min-height:700px;
+      margin-top:var(--nav-h);
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+    }
+    .hero-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .hero-overlay { position:absolute; inset:0; background:rgba(0,0,0,.4); }
+    #hero .container {
+      display:flex; justify-content:center; align-items:center;
+    }
+    .hero-inner {
+      position:relative; z-index:1; max-width:768px; width:100%;
+      display:flex; flex-direction:column; align-items:center; gap:32px; text-align:center;
+    }
+    .hero-actions { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+
+    /* ─── SECTION HEAD ─── */
+    .sec-head {
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      gap:16px; max-width:768px; width:100%;
+    }
+    .tag { font-size:16px; font-weight:600; }
+
+    /* ─── WAT JE KRIJGT ─── */
+    #wat { background:var(--coral); }
+    #wat .container { display:flex; flex-direction:column; align-items:center; gap:80px; }
+    .three-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; width:100%; }
+    .col-item { display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; }
+    .col-text { display:flex; flex-direction:column; gap:16px; }
+
+    /* ─── LESSEN ─── */
+    #lessen { background:var(--teal); }
+    .tabs-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .tabs-img { border-radius:var(--r); overflow:hidden; aspect-ratio:1/1; }
+    .tabs-img img { width:100%; height:100%; object-fit:cover; }
+    .tabs-menu { display:flex; flex-direction:column; gap:40px; }
+    .tab-item {
+      display:flex; flex-direction:column; gap:12px;
+      padding:16px 16px 16px 32px;
+      border-left:3px solid transparent;
+      cursor:pointer; transition:background .2s, border-color .2s;
+    }
+    .tab-item:hover { background:rgba(255,255,255,.06); }
+    .tab-item.active { background:var(--teal-dk); border-left-color:#fff; }
+
+    /* ─── DANS ─── */
+    .dans-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .dans-tekst { display:flex; flex-direction:column; gap:24px; }
+    .dans-foto { border-radius:var(--r); overflow:hidden; aspect-ratio:3/4; }
+    .dans-foto img { width:100%; height:100%; object-fit:cover; }
+    @media (max-width:900px) { .dans-layout { grid-template-columns:1fr; gap:40px; } }
+
+    /* ─── SCHEMA INFO BAR ─── */
+    #schema { background:var(--teal); }
+    #schema .container { display:flex; flex-direction:column; align-items:center; gap:56px; }
+    .info-bar {
+      display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+      gap:0; width:100%; border:1px solid rgba(255,255,255,.2);
+      border-radius:var(--r); overflow:hidden;
+    }
+    .info-item {
+      display:flex; flex-direction:column; align-items:center; gap:12px;
+      padding:40px 24px; text-align:center;
+    }
+    .info-item svg { opacity:.8; }
+    .info-label { font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
+    .info-value { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.3; }
+    .info-divider { width:1px; background:rgba(255,255,255,.2); align-self:stretch; }
+
+    /* ─── TARIEVEN ─── */
+    #prijzen .container { display:flex; flex-direction:column; align-items:center; gap:56px; }
+    .tarief-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; width:100%; }
+    .tarief-card {
+      background:var(--coral-dk); border:1px solid rgba(255,255,255,.15);
+      border-radius:var(--r); padding:32px;
+      display:flex; flex-direction:column; gap:24px;
+    }
+    .tarief-header { display:flex; flex-direction:column; gap:6px; }
+    .tarief-duur { font-size:14px; opacity:.7; }
+    .tarief-list { list-style:none; display:flex; flex-direction:column; gap:0; flex:1; }
+    .tarief-list li {
+      display:flex; justify-content:space-between; align-items:baseline;
+      gap:8px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,.1);
+      font-size:16px; line-height:1.5;
+    }
+    .tarief-list li:first-child { border-top:none; }
+    .tarief-list li:last-child { border-bottom:none; }
+    .tarief-prijs { font-weight:600; white-space:nowrap; flex-shrink:0; }
+
+    @media (max-width:900px) {
+      .info-bar { grid-template-columns:1fr 1fr; }
+      .info-divider:nth-child(2) { display:none; }
+      .info-divider:nth-child(4) { display:none; }
+      .info-divider:nth-child(6) { width:100%; height:1px; grid-column:1/-1; }
+      .tarief-grid { grid-template-columns:1fr; }
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    #testimonial { background:var(--teal); }
+    .testimonial-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .testimonial-img { border-radius:var(--r); overflow:hidden; aspect-ratio:600/640; }
+    .testimonial-img img { width:100%; height:100%; object-fit:cover; }
+    .testimonial-content { display:flex; flex-direction:column; gap:32px; }
+    .stars { display:flex; gap:4px; }
+    .stars svg { width:20px; height:20px; fill:#fff; }
+    blockquote { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; }
+    .author .name { font-size:16px; font-weight:600; }
+    .author .role { font-size:16px; opacity:.75; }
+
+    /* ─── CTA ─── */
+    #cta { background:var(--navy); }
+    #cta .container { display:flex; flex-direction:column; align-items:center; gap:32px; text-align:center; }
+    .cta-content { display:flex; flex-direction:column; gap:24px; align-items:center; max-width:768px; }
+    .email-input {
+      flex:1; min-width:200px; background:rgba(255,255,255,.1);
+      border:1px solid #fff; border-radius:6px; padding:10px 12px;
+      font-family:'Poppins',sans-serif; font-size:16px; color:#fff; outline:none;
+    }
+    .email-input::placeholder { color:rgba(255,255,255,.6); }
+    .form-row { display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:center; max-width:513px; width:100%; }
+
+    /* ─── CONTACT ─── */
+    #contact { background:var(--coral); }
+    .contact-row { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; width:100%; }
+    .contact-item { display:flex; flex-direction:column; gap:24px; }
+    .contact-icon { width:48px; height:48px; }
+    .contact-info { display:flex; flex-direction:column; gap:12px; }
+    .contact-info a { text-decoration:underline; font-size:16px; }
+
+    /* ════════════════════════════════════
+       FOOTER  — statisch onderaan de pagina
+    ════════════════════════════════════ */
+    footer.site-footer {
+      background:var(--teal);
+      padding:80px var(--pad) 0;
+    }
+    footer.site-footer .inner {
+      max-width:1280px; margin:0 auto;
+      display:flex; flex-direction:column; gap:80px;
+    }
+    .footer-top { display:flex; justify-content:space-between; align-items:flex-start; gap:48px; }
+    .footer-left { display:flex; flex-direction:column; gap:32px; flex:1; }
+    .footer-logo { line-height:0; }
+    .footer-logo svg { height:41px; width:auto; }
+    .footer-links { display:flex; gap:32px; flex-wrap:wrap; font-size:14px; font-weight:600; }
+    .footer-right { display:flex; flex-direction:column; gap:16px; width:400px; flex-shrink:0; }
+    .footer-form { display:flex; gap:16px; }
+    .footer-credits {
+      border-top:1px solid rgba(255,255,255,.2);
+      padding:32px 0;
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    }
+    .footer-legal { display:flex; gap:24px; }
+    .footer-legal a { font-size:14px; text-decoration:underline; }
+    .footer-copy { font-size:14px; }
+
+    /* ─── Responsive ─── */
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
+    }
+    .hamburger span { display: block; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s, opacity .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--teal-dk); z-index: 99;
+      flex-direction: column; padding: 8px 0;
+      border-top: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a.mob-link {
+      padding: 16px 24px; font-size: 16px; color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.08); display: block;
+    }
+    .mobile-menu .mob-btn {
+      margin: 16px 24px 8px; display: block; text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      :root { --pad:24px; --sec:64px; }
+      h1,.h1 { font-size:40px; }
+      h2,.h2 { font-size:32px; }
+      .three-cols,.tabs-layout,.testimonial-layout,.contact-row { grid-template-columns:1fr; gap:40px; }
+      .price-grid { grid-template-columns:1fr; }
+      .footer-top { flex-direction:column; }
+      .footer-right { width:100%; }
+      .nav-center, .nav-right { display:none; }
+      .hamburger { display:flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     NAVBAR — fixed bovenaan, height 72px
+     Figma node: 658:677
+════════════════════════════════════ -->
+<nav class="site-nav" aria-label="Hoofdnavigatie">
+  <div class="container">
+    <a href="#" class="nav-logo" aria-label="Joya Kinderyoga home">
+      <svg width="111" height="46" viewBox="0 0 111 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.3185 6.07066C36.8195 4.67171 35.4254 2.71357 33.3525 1.94395C30.7555 0.981447 28.04 1.84654 26.7053 5.5894L23.0871 15.7191C22.85 16.3816 23.1522 17.0401 23.8272 17.2895C24.4774 17.5311 25.1238 17.2233 25.3609 16.5608L28.9981 6.38045C29.7344 4.31905 30.9716 3.62542 32.4957 4.19046C34.345 4.87629 34.0256 6.39994 34.9741 6.7526C35.4732 6.93769 36.066 6.78377 36.3204 6.07066" fill="white"/>
+<path d="M18.3885 1.02439C17.6255 -0.245968 15.2542 -0.357027 13.3725 0.815908C11.0146 2.285 9.98769 4.98742 12.0243 8.38348L17.5413 17.5819C17.9009 18.182 18.595 18.3534 19.2089 17.9715C19.7979 17.6052 19.9662 16.898 19.6066 16.2959L14.0628 7.05272C12.9403 5.18032 13.1793 3.76188 14.5639 2.90069C16.2429 1.85635 17.2143 3.06046 18.0749 2.5227C18.5281 2.24019 18.7786 1.67125 18.3904 1.02439" fill="white"/>
+<path d="M3.33665 12.1595C1.88521 11.9744 0.322842 13.7942 0.0493813 16.0251C-0.294836 18.8191 1.1394 21.3228 5.01567 21.8177L15.5124 23.1582C16.1989 23.2458 16.763 22.7997 16.851 22.0729C16.937 21.3734 16.4991 20.8006 15.8126 20.7129L5.26236 19.3666C3.1263 19.0938 2.18735 18.0183 2.38814 16.3797C2.63292 14.3904 4.16277 14.3689 4.28899 13.348C4.35592 12.8102 4.07481 12.2569 3.33665 12.1614" fill="white"/>
+<path d="M2.49718 31.092C1.45114 32.1325 1.87185 34.5115 3.41317 36.1208C5.3427 38.1374 8.15763 38.5563 10.9553 35.776L18.5281 28.2493C19.0234 27.7583 19.0311 27.0296 18.53 26.5055C18.0481 26.0009 17.3329 25.9931 16.8376 26.4841L9.22661 34.0477C7.68529 35.5792 6.274 35.6571 5.14191 34.4744C3.76887 33.0404 4.70399 31.8071 4.00026 31.0706C3.62927 30.6829 3.0288 30.5601 2.49718 31.0901" fill="white"/>
+<path d="M16.501 43.5657C16.6463 45.0484 18.7365 46.196 20.9318 45.9719C23.6818 45.6914 25.7585 43.7099 25.3703 39.7488L24.3166 29.0228C24.2478 28.3214 23.6951 27.8616 22.9799 27.9337C22.2915 28.0038 21.8402 28.5669 21.909 29.2683L22.9685 40.0469C23.1826 42.2291 22.3623 43.402 20.7502 43.5657C18.792 43.7664 18.4305 42.2505 17.4247 42.3538C16.8949 42.4083 16.4264 42.8097 16.501 43.5637" fill="white"/>
+<path d="M34.8038 40.1872C36.0315 40.9958 38.2154 40.0469 39.4125 38.1589C40.9118 35.7936 40.6861 32.9041 37.4046 30.7433L28.5181 24.8942C27.9367 24.5123 27.2387 24.6663 26.8505 25.28C26.4757 25.8723 26.6249 26.5835 27.2062 26.9654L36.1386 32.8437C37.9477 34.0342 38.3359 35.4175 37.4562 36.8048C36.3892 38.4882 35.0008 37.8335 34.4539 38.6967C34.1651 39.1526 34.1823 39.7741 34.8077 40.1872" fill="white"/>
+<path d="M43.6235 23.5011C45.01 23.0276 45.6429 20.6954 44.9411 18.5638C44.0615 15.8945 41.7036 14.2735 37.9994 15.5399L27.9712 18.973C27.3153 19.1971 26.9979 19.8478 27.2273 20.5415C27.4473 21.2098 28.0879 21.5332 28.7419 21.3091L38.8217 17.8585C40.8622 17.159 42.1664 17.7143 42.6827 19.2789C43.3099 21.1786 41.9407 21.8761 42.262 22.8503C42.4322 23.3647 42.9198 23.7388 43.6254 23.4972" fill="white"/>
+<path d="M99.7503 25.0818L102.967 17.2006L106.183 25.0818H99.7503ZM110.834 29.9294L104.959 15.9283C104.481 14.7358 104.03 14.276 103.045 14.276C102.06 14.276 101.609 14.7358 101.131 15.9283L95.2296 30.0113C94.8299 30.9855 95.2296 31.7453 96.0806 31.7707C96.8245 31.8252 97.1706 31.418 97.49 30.6328L98.8458 27.2738H107.059L108.415 30.6055C108.734 31.418 109.239 31.8233 109.956 31.7707C110.834 31.7434 111.259 30.9855 110.834 29.9294ZM94.7554 14.276C94.1166 14.276 93.7724 14.6559 93.3995 15.2775L88.7488 23.3205L84.0445 15.1684C83.7519 14.6813 83.4325 14.2741 82.7957 14.2741C81.8128 14.2741 81.2812 15.221 81.8664 16.1971L87.5019 25.8651V30.551C87.5019 31.2543 88.0068 31.7707 88.6991 31.7707C89.3913 31.7707 89.921 31.2563 89.921 30.551V25.8105L95.6618 16.0607C96.1667 15.1937 95.7689 14.2741 94.7573 14.2741M78.5772 23.075C78.5772 26.6776 75.812 29.6294 72.3832 29.6294C68.9544 29.6294 66.216 26.6775 66.216 23.0477C66.216 19.4178 68.9812 16.4387 72.3832 16.4387C75.7852 16.4387 78.5772 19.4178 78.5772 23.075ZM81.1014 23.075C81.1014 18.091 77.1946 14.0286 72.3832 14.0286C67.5718 14.0286 63.6649 18.0637 63.6649 23.0477C63.6649 28.0317 67.5718 32.0395 72.3832 32.0395C77.1946 32.0395 81.1014 28.0317 81.1014 23.075ZM51.4414 29.1968C51.4414 30.6854 53.4092 32.0415 55.6141 32.0415C58.3793 32.0415 60.6377 30.2821 60.6377 26.2996V15.521C60.6377 14.8177 60.1329 14.3033 59.4158 14.3033C58.6986 14.3033 58.2187 14.8177 58.2187 15.521V26.3541C58.2187 28.548 57.2893 29.6313 55.6676 29.6313C53.6999 29.6313 53.4876 28.0882 52.4779 28.0882C51.9463 28.0882 51.4414 28.4408 51.4414 29.1988" fill="white"/>
+</svg>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-center" role="list">
+        <li><a href="#wat">Over Joya</a></li>
+        <li><a href="#lessen">Lessen</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#cta" class="btn btn-wf btn-sm">Aanmelden</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+  </div>
+</nav>
+
+<!-- Mobiel menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigatie">
+  <a href="#wat"     class="mob-link" onclick="closeMobileMenu()">Over Joya</a>
+  <a href="#lessen"  class="mob-link" onclick="closeMobileMenu()">Lessen</a>
+  <a href="#prijzen" class="mob-link" onclick="closeMobileMenu()">Prijzen</a>
+  <a href="#contact" class="mob-link" onclick="closeMobileMenu()">Contact</a>
+  <a href="#cta"     class="btn btn-wf mob-btn" onclick="closeMobileMenu()">Aanmelden</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <img class="hero-bg" src="images/header.jpg" alt="Moeder en kind in yogales" loading="eager">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48.179 7.90408C48.8436 6.08264 46.9943 3.53314 44.2444 2.53109C40.7994 1.2779 37.1971 2.40425 35.4264 7.27749L30.6267 20.4664C30.3122 21.3289 30.713 22.1864 31.6085 22.5111C32.471 22.8257 33.3284 22.4249 33.643 21.5623L38.468 8.30744C39.4447 5.62348 41.086 4.72037 43.1079 5.45605C45.561 6.34901 45.1373 8.3328 46.3956 8.79197C47.0577 9.03297 47.8441 8.83256 48.1815 7.90408" fill="white"/>
+<path d="M24.3937 1.33376C23.3815 -0.320252 20.2358 -0.464851 17.7396 1.06232C14.6117 2.97508 13.2494 6.49365 15.9511 10.9153L23.2699 22.8917C23.7468 23.673 24.6677 23.8963 25.482 23.399C26.2633 22.9221 26.4866 22.0012 26.0096 21.2174L18.6554 9.18268C17.1663 6.7448 17.4834 4.89799 19.32 3.77672C21.5474 2.41698 22.8361 3.98474 23.9776 3.28457C24.5789 2.91673 24.9112 2.17598 24.3962 1.33376" fill="white"/>
+<path d="M4.42631 15.8317C2.50086 15.5907 0.428273 17.9601 0.0655077 20.8648C-0.39112 24.5026 1.5115 27.7624 6.65364 28.4067L20.5782 30.1521C21.489 30.2662 22.2373 29.6853 22.354 28.7391C22.4682 27.8283 21.8872 27.0825 20.9765 26.9684L6.98089 25.2154C4.14725 24.8603 2.90167 23.4599 3.16804 21.3265C3.49275 18.7364 5.52221 18.7085 5.68964 17.3792C5.77843 16.679 5.40552 15.9586 4.42631 15.8343" fill="white"/>
+<path d="M3.31281 40.482C1.92517 41.8367 2.48327 44.9341 4.52795 47.0295C7.0876 49.6551 10.8218 50.2006 14.5332 46.5805L24.579 36.7808C25.236 36.1415 25.2462 35.1927 24.5815 34.5103C23.9422 33.8533 22.9935 33.8431 22.3364 34.4824L12.2399 44.3303C10.1952 46.3243 8.32303 46.4258 6.82124 44.8859C4.9998 43.0188 6.2403 41.413 5.30675 40.4541C4.81461 39.9493 4.01805 39.7894 3.31281 40.4795" fill="white"/>
+<path d="M21.8898 56.7228C22.0826 58.6533 24.8553 60.1475 27.7676 59.8558C31.4156 59.4905 34.1706 56.9105 33.6556 51.7532L32.2578 37.788C32.1665 36.8747 31.4333 36.276 30.4846 36.3699C29.5713 36.4612 28.9726 37.1944 29.0639 38.1076L30.4693 52.1413C30.7535 54.9826 29.6652 56.5097 27.5266 56.7228C24.9289 56.9841 24.4495 55.0105 23.1151 55.1449C22.4124 55.2159 21.7909 55.7385 21.8898 56.7203" fill="white"/>
+<path d="M46.1694 52.3238C47.7981 53.3766 50.6951 52.1412 52.2832 49.683C54.272 46.6033 53.9727 42.8412 49.6195 40.0278L37.8309 32.4123C37.0597 31.9151 36.1338 32.1155 35.6188 32.9146C35.1216 33.6858 35.3195 34.6117 36.0906 35.1089L47.9401 42.7625C50.34 44.3125 50.855 46.1137 49.688 47.9199C48.2725 50.1117 46.4307 49.2593 45.7052 50.3831C45.3221 50.9768 45.345 51.786 46.1745 52.3238" fill="white"/>
+<path d="M57.8697 30.5984C59.7089 29.982 60.5486 26.9454 59.6176 24.1701C58.4507 20.6947 55.3228 18.5841 50.4089 20.233L37.1058 24.7029C36.2357 24.9946 35.8146 25.8419 36.119 26.745C36.4108 27.6151 37.2606 28.0363 38.1282 27.7445L51.4998 23.2518C54.2066 22.3411 55.9367 23.0641 56.6216 25.1012C57.4537 27.5746 55.6373 28.4827 56.0635 29.7511C56.2893 30.4209 56.9362 30.9079 57.8723 30.5934" fill="white"/>
+</svg>
+      <h1>Yoga en ontspanning voor jou en je peuter</h1>
+      <p class="body-md">Elke zaterdag beleven jij en je kindje samen een speels uur met yoga, dans en massages. Een moment van echte verbinding.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-wf">Aanmelden</a>
+        <a href="#wat" class="btn btn-wg">Meer info</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAT JE KRIJGT — Figma 658:725 -->
+<section id="wat" class="section">
+  <div class="container">
+    <div class="sec-head">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48.179 7.90408C48.8436 6.08264 46.9943 3.53314 44.2444 2.53109C40.7994 1.2779 37.1971 2.40425 35.4264 7.27749L30.6267 20.4664C30.3122 21.3289 30.713 22.1864 31.6085 22.5111C32.471 22.8257 33.3284 22.4249 33.643 21.5623L38.468 8.30744C39.4447 5.62348 41.086 4.72037 43.1079 5.45605C45.561 6.34901 45.1373 8.3328 46.3956 8.79197C47.0577 9.03297 47.8441 8.83256 48.1815 7.90408" fill="white"/>
+<path d="M24.3937 1.33376C23.3815 -0.320252 20.2358 -0.464851 17.7396 1.06232C14.6117 2.97508 13.2494 6.49365 15.9511 10.9153L23.2699 22.8917C23.7468 23.673 24.6677 23.8963 25.482 23.399C26.2633 22.9221 26.4866 22.0012 26.0096 21.2174L18.6554 9.18268C17.1663 6.7448 17.4834 4.89799 19.32 3.77672C21.5474 2.41698 22.8361 3.98474 23.9776 3.28457C24.5789 2.91673 24.9112 2.17598 24.3962 1.33376" fill="white"/>
+<path d="M4.42631 15.8317C2.50086 15.5907 0.428273 17.9601 0.0655077 20.8648C-0.39112 24.5026 1.5115 27.7624 6.65364 28.4067L20.5782 30.1521C21.489 30.2662 22.2373 29.6853 22.354 28.7391C22.4682 27.8283 21.8872 27.0825 20.9765 26.9684L6.98089 25.2154C4.14725 24.8603 2.90167 23.4599 3.16804 21.3265C3.49275 18.7364 5.52221 18.7085 5.68964 17.3792C5.77843 16.679 5.40552 15.9586 4.42631 15.8343" fill="white"/>
+<path d="M3.31281 40.482C1.92517 41.8367 2.48327 44.9341 4.52795 47.0295C7.0876 49.6551 10.8218 50.2006 14.5332 46.5805L24.579 36.7808C25.236 36.1415 25.2462 35.1927 24.5815 34.5103C23.9422 33.8533 22.9935 33.8431 22.3364 34.4824L12.2399 44.3303C10.1952 46.3243 8.32303 46.4258 6.82124 44.8859C4.9998 43.0188 6.2403 41.413 5.30675 40.4541C4.81461 39.9493 4.01805 39.7894 3.31281 40.4795" fill="white"/>
+<path d="M21.8898 56.7228C22.0826 58.6533 24.8553 60.1475 27.7676 59.8558C31.4156 59.4905 34.1706 56.9105 33.6556 51.7532L32.2578 37.788C32.1665 36.8747 31.4333 36.276 30.4846 36.3699C29.5713 36.4612 28.9726 37.1944 29.0639 38.1076L30.4693 52.1413C30.7535 54.9826 29.6652 56.5097 27.5266 56.7228C24.9289 56.9841 24.4495 55.0105 23.1151 55.1449C22.4124 55.2159 21.7909 55.7385 21.8898 56.7203" fill="white"/>
+<path d="M46.1694 52.3238C47.7981 53.3766 50.6951 52.1412 52.2832 49.683C54.272 46.6033 53.9727 42.8412 49.6195 40.0278L37.8309 32.4123C37.0597 31.9151 36.1338 32.1155 35.6188 32.9146C35.1216 33.6858 35.3195 34.6117 36.0906 35.1089L47.9401 42.7625C50.34 44.3125 50.855 46.1137 49.688 47.9199C48.2725 50.1117 46.4307 49.2593 45.7052 50.3831C45.3221 50.9768 45.345 51.786 46.1745 52.3238" fill="white"/>
+<path d="M57.8697 30.5984C59.7089 29.982 60.5486 26.9454 59.6176 24.1701C58.4507 20.6947 55.3228 18.5841 50.4089 20.233L37.1058 24.7029C36.2357 24.9946 35.8146 25.8419 36.119 26.745C36.4108 27.6151 37.2606 28.0363 38.1282 27.7445L51.4998 23.2518C54.2066 22.3411 55.9367 23.0641 56.6216 25.1012C57.4537 27.5746 55.6373 28.4827 56.0635 29.7511C56.2893 30.4209 56.9362 30.9079 57.8723 30.5934" fill="white"/>
+</svg>
+      <span class="tag">Wat je krijgt</span>
+      <h2>Een uur vol beweging, rust en plezier</h2>
+      <p class="body-md">Bewegen, fantasie en ontspanning voor peuters en kleuters van 2 tot 4 jaar</p>
+    </div>
+    <div class="three-cols">
+      <div class="col-item">
+        <svg width="57" height="64" viewBox="0 0 57 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_677_208)">
+<path d="M27.9999 18.67H21.9099C18.7899 18.67 15.9999 20.59 14.5199 25.12L11.7299 34.48L2.25994 42.31C0.779944 43.54 0.559944 45.73 1.77994 47.22C2.96994 48.67 5.07994 48.93 6.57994 47.8L17.3299 39.74L19.5599 33.8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.9998 18.67H34.0898C37.2098 18.67 39.9998 20.59 41.4798 25.12L44.2698 34.48L53.7398 42.31C55.2198 43.54 55.4398 45.73 54.2198 47.22C53.0298 48.67 50.9198 48.93 49.4198 47.8L38.6698 39.74L36.4398 33.8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.5701 29.6V44.89L11.3901 49.39C11.3901 49.39 6.90015 51.69 6.90015 55.8C6.90015 58.89 9.30015 62.37 13.4001 62.37C19.1901 62.37 36.2201 54.03 36.2201 54.03L41.1401 55.29" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.2498 58.47C27.2498 58.47 39.5598 63.13 43.9598 62.38C47.3598 61.8 49.1098 58.88 49.0998 55.79C49.0998 51.68 44.6098 49.38 44.6098 49.38L36.4298 44.88V29.59" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.25 50.41L16.3 53.92" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34.0402 7.03C34.0402 10.36 31.3402 13.06 28.0102 13.06C24.6802 13.06 21.9802 10.36 21.9802 7.03C21.9802 3.7 24.6802 1 28.0102 1C31.3402 1 34.0402 3.7 34.0402 7.03Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_677_208">
+<rect width="56.01" height="63.46" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        <div class="col-text">
+          <h3 class="h4">Yoga &amp; spel</h3>
+          <p class="body-rg">Met beweging en fantasie ontdekken kinderen hun lijf en beleven ze plezier in elke oefening.</p>
+        </div>
+      </div>
+      <div class="col-item">
+        <svg width="67" height="62" viewBox="0 0 67 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_677_216)">
+<path d="M44.4399 31.99L30.3999 33.14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.1198 20.89L23.9098 23.88C19.9498 25.09 18.4998 26.71 16.0298 30.04L2.24981 53.1C2.24981 53.1 -0.470187 57.02 2.11981 59.12C4.72981 61.24 7.48981 58.53 8.13981 57.56C8.78981 56.59 24.4098 33.13 24.4098 33.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.5399 32.96L46.8099 53.5C46.8099 53.5 49.8199 57.21 47.3899 59.5C44.9399 61.81 41.9899 59.31 41.2699 58.39C40.5499 57.47 23.8999 34.83 23.8999 34.83" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50.6799 27.04C50.6799 27.04 53.5899 46.64 53.9399 49.5C54.1999 51.57 53.6499 53 51.5099 53.22C49.8699 53.39 48.4399 52.46 48.1399 50.36L44.4399 31.99" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50.67 26.89C50.67 26.89 48.87 7.02002 48.6 4.15002C48.41 2.08002 47.5701 0.800021 45.43 1.04002C43.8 1.22002 42.59 2.44002 42.75 4.55002L43.1101 20.9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.1602 30.68C57.2702 30.83 54.8002 28.6 54.6502 25.71C54.5002 22.82 56.7302 20.35 59.6302 20.2C62.5202 20.05 64.9902 22.28 65.1402 25.18C65.2902 28.07 63.0602 30.54 60.1602 30.69V30.68Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_677_216">
+<rect width="66.14" height="61.45" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        <div class="col-text">
+          <h3 class="h4">Dansmomentjes</h3>
+          <p class="body-rg">Bewegen op muziek, springen en draaien, helemaal op hun eigen manier.</p>
+        </div>
+      </div>
+      <div class="col-item">
+        <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_677_237)">
+<path d="M28.01 55.02C42.9272 55.02 55.02 42.9272 55.02 28.01C55.02 13.0928 42.9272 1 28.01 1C13.0928 1 1 13.0928 1 28.01C1 42.9272 13.0928 55.02 28.01 55.02Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31.4001 14.5C31.4001 16.37 29.8801 17.89 28.0101 17.89C26.1401 17.89 24.6201 16.37 24.6201 14.5C24.6201 12.63 26.1401 11.11 28.0101 11.11C29.8801 11.11 31.4001 12.63 31.4001 14.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31.4001 41.51C31.4001 43.38 29.8801 44.9 28.0101 44.9C26.1401 44.9 24.6201 43.38 24.6201 41.51C24.6201 39.64 26.1401 38.12 28.0101 38.12C29.8801 38.12 31.4001 39.64 31.4001 41.51Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.0098 55.02C35.4698 55.02 41.5098 48.97 41.5098 41.52C41.5098 34.07 36.3498 29.68 28.0098 28.02C19.6698 26.36 14.5098 21.97 14.5098 14.52C14.5098 7.07 20.5498 1 28.0098 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_677_237">
+<rect width="56.02" height="56.02" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+        <div class="col-text">
+          <h3 class="h4">Massage &amp; rust</h3>
+          <p class="body-rg">Tijdens de ontspanning, savasana, krijgen de kinderen een zachte massage.</p>
+        </div>
+      </div>
+    </div>
+    <a href="#lessen" class="btn btn-wg">Lessen &amp; Prijzen</a>
+  </div>
+</section>
+
+<!-- LESSEN — Figma 658:753 -->
+<section id="lessen" class="section">
+  <div class="container">
+    <div class="tabs-layout">
+      <div class="tabs-img">
+        <img src="images/yoga.jpg" alt="Kinderyoga les" loading="lazy">
+      </div>
+      <div class="tabs-menu">
+        <div class="tab-item active">
+          <h3 class="h4">Quality time</h3>
+          <p class="body-rg">Een kostbaar uur waarin je volledig aanwezig bent met je kind, zonder afleiding of haast.</p>
+        </div>
+        <div class="tab-item">
+          <h3 class="h4">Ontspanning</h3>
+          <p class="body-rg">Samen bewegen, spelen en ontdekken terwijl jullie allebei rust en plezier ervaren.</p>
+        </div>
+        <div class="tab-item">
+          <h3 class="h4">Verbinding</h3>
+          <p class="body-rg">Creëer bijzondere momenten waarin jullie samen groeien en je innerlijke kind geraakt wordt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DANS IN DE LESSEN -->
+<section id="dans" class="section" style="background:var(--coral)">
+  <div class="container">
+    <div class="dans-layout">
+      <div class="dans-tekst">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M48.179 7.90408C48.8436 6.08264 46.9943 3.53314 44.2444 2.53109C40.7994 1.2779 37.1971 2.40425 35.4264 7.27749L30.6267 20.4664C30.3122 21.3289 30.713 22.1864 31.6085 22.5111C32.471 22.8257 33.3284 22.4249 33.643 21.5623L38.468 8.30744C39.4447 5.62348 41.086 4.72037 43.1079 5.45605C45.561 6.34901 45.1373 8.3328 46.3956 8.79197C47.0577 9.03297 47.8441 8.83256 48.1815 7.90408" fill="white"/><path d="M24.3937 1.33376C23.3815 -0.320252 20.2358 -0.464851 17.7396 1.06232C14.6117 2.97508 13.2494 6.49365 15.9511 10.9153L23.2699 22.8917C23.7468 23.673 24.6677 23.8963 25.482 23.399C26.2633 22.9221 26.4866 22.0012 26.0096 21.2174L18.6554 9.18268C17.1663 6.7448 17.4834 4.89799 19.32 3.77672C21.5474 2.41698 22.8361 3.98474 23.9776 3.28457C24.5789 2.91673 24.9112 2.17598 24.3962 1.33376" fill="white"/><path d="M4.42631 15.8317C2.50086 15.5907 0.428273 17.9601 0.0655077 20.8648C-0.39112 24.5026 1.5115 27.7624 6.65364 28.4067L20.5782 30.1521C21.489 30.2662 22.2373 29.6853 22.354 28.7391C22.4682 27.8283 21.8872 27.0825 20.9765 26.9684L6.98089 25.2154C4.14725 24.8603 2.90167 23.4599 3.16804 21.3265C3.49275 18.7364 5.52221 18.7085 5.68964 17.3792C5.77843 16.679 5.40552 15.9586 4.42631 15.8343" fill="white"/><path d="M3.31281 40.482C1.92517 41.8367 2.48327 44.9341 4.52795 47.0295C7.0876 49.6551 10.8218 50.2006 14.5332 46.5805L24.579 36.7808C25.236 36.1415 25.2462 35.1927 24.5815 34.5103C23.9422 33.8533 22.9935 33.8431 22.3364 34.4824L12.2399 44.3303C10.1952 46.3243 8.32303 46.4258 6.82124 44.8859C4.9998 43.0188 6.2403 41.413 5.30675 40.4541C4.81461 39.9493 4.01805 39.7894 3.31281 40.4795" fill="white"/><path d="M21.8898 56.7228C22.0826 58.6533 24.8553 60.1475 27.7676 59.8558C31.4156 59.4905 34.1706 56.9105 33.6556 51.7532L32.2578 37.788C32.1665 36.8747 31.4333 36.276 30.4846 36.3699C29.5713 36.4612 28.9726 37.1944 29.0639 38.1076L30.4693 52.1413C30.7535 54.9826 29.6652 56.5097 27.5266 56.7228C24.9289 56.9841 24.4495 55.0105 23.1151 55.1449C22.4124 55.2159 21.7909 55.7385 21.8898 56.7203" fill="white"/><path d="M46.1694 52.3238C47.7981 53.3766 50.6951 52.1412 52.2832 49.683C54.272 46.6033 53.9727 42.8412 49.6195 40.0278L37.8309 32.4123C37.0597 31.9151 36.1338 32.1155 35.6188 32.9146C35.1216 33.6858 35.3195 34.6117 36.0906 35.1089L47.9401 42.7625C50.34 44.3125 50.855 46.1137 49.688 47.9199C48.2725 50.1117 46.4307 49.2593 45.7052 50.3831C45.3221 50.9768 45.345 51.786 46.1745 52.3238" fill="white"/><path d="M57.8697 30.5984C59.7089 29.982 60.5486 26.9454 59.6176 24.1701C58.4507 20.6947 55.3228 18.5841 50.4089 20.233L37.1058 24.7029C36.2357 24.9946 35.8146 25.8419 36.119 26.745C36.4108 27.6151 37.2606 28.0363 38.1282 27.7445L51.4998 23.2518C54.2066 22.3411 55.9367 23.0641 56.6216 25.1012C57.4537 27.5746 55.6373 28.4827 56.0635 29.7511C56.2893 30.4209 56.9362 30.9079 57.8723 30.5934" fill="white"/></svg>
+        <h2>Dans in de lessen</h2>
+        <p class="body-md">Ik ben dol op dansen en neem dat graag mee in mijn yogalessen. Niet vanuit een dansachtergrond, maar vanuit plezier en vrijheid. Samen met de kinderen bewegen we op muziek, springen, draaien en experimenteren met ritme en expressie. Dans nodigt uit om te voelen, los te laten en het lichaam te ontdekken op een speelse manier. Zo ontstaat ontspanning vaak vanzelf, én blijft het leuk, licht en vol energie.</p>
+      </div>
+      <div class="dans-foto">
+        <img src="images/dans.jpg" alt="Dans in de les" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEMA -->
+<section id="schema" class="section">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Schema</span>
+      <h2>Elke zaterdag op vaste tijden</h2>
+      <p class="body-md">Dezelfde dag en tijd elke week, zodat jij en je peuter een fijn ritme opbouwen.</p>
+    </div>
+    <div class="info-bar">
+      <div class="info-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 9h18" stroke="white" stroke-width="1.5"/><path d="M8 2v4M16 2v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <p class="info-label">Dag</p>
+        <p class="info-value">Zaterdag</p>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p class="info-label">Aanvangstijd</p>
+        <p class="info-value">10:30 – 11:30</p>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="white" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="white" stroke-width="1.5"/></svg>
+        <p class="info-label">Locatie</p>
+        <p class="info-value">J.J. Cremerplein 27a<br>Amsterdam</p>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="white" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="white" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <p class="info-label">Voor wie</p>
+        <p class="info-value">Peuter 2–4 jaar<br>Kleuter 4–6 jaar</p>
+      </div>
+    </div>
+    <a href="#cta" class="btn btn-wg">Aanmelden</a>
+  </div>
+</section>
+
+<!-- PRIJZEN -->
+<section id="prijzen" class="section" style="background:var(--coral)">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">Tarieven</span>
+      <h2>Transparante prijzen</h2>
+      <p class="body-md">Eerste twee proeflessen altijd voordelig — zo kun je rustig ontdekken of het bij jullie past.</p>
+    </div>
+    <div class="tarief-grid">
+
+      <div class="tarief-card">
+        <div class="tarief-header">
+          <h3 class="h5">Ouder &amp; kind yoga</h3>
+          <span class="tarief-duur">60 minuten</span>
+        </div>
+        <hr class="div">
+        <ul class="tarief-list">
+          <li><span>Eerste 2 proeflessen</span><span class="tarief-prijs">€ 12,00</span></li>
+          <li><span>Losse les</span><span class="tarief-prijs">€ 17,50</span></li>
+          <li><span>4 lessen blok</span><span class="tarief-prijs">€ 64,00</span></li>
+          <li><span>12 lessen blok</span><span class="tarief-prijs">€ 162,00</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-wg" style="margin-top:8px">Aanmelden</a>
+      </div>
+
+      <div class="tarief-card">
+        <div class="tarief-header">
+          <h3 class="h5">Peuter yoga</h3>
+          <span class="tarief-duur">45 minuten</span>
+        </div>
+        <hr class="div">
+        <ul class="tarief-list">
+          <li><span>Eerste 2 proeflessen</span><span class="tarief-prijs">€ 10,00</span></li>
+          <li><span>Losse les</span><span class="tarief-prijs">€ 10,00</span></li>
+          <li><span>4 lessen blok</span><span class="tarief-prijs">€ 36,00</span></li>
+          <li><span>12 lessen blok</span><span class="tarief-prijs">€ 96,00</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-wg" style="margin-top:8px">Aanmelden</a>
+      </div>
+
+      <div class="tarief-card">
+        <div class="tarief-header">
+          <h3 class="h5">Kleuteryoga</h3>
+          <span class="tarief-duur">60 minuten</span>
+        </div>
+        <hr class="div">
+        <ul class="tarief-list">
+          <li><span>Eerste 2 proeflessen</span><span class="tarief-prijs">€ 10,00</span></li>
+          <li><span>Losse les</span><span class="tarief-prijs">€ 13,00</span></li>
+          <li><span>4 lessen blok</span><span class="tarief-prijs">€ 44,00</span></li>
+          <li><span>12 lessen blok</span><span class="tarief-prijs">€ 126,00</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-wg" style="margin-top:8px">Aanmelden</a>
+      </div>
+
+    </div>
+    <p class="body-sm" style="opacity:.75;text-align:center">Voor de continuïteit is het fijn een aaneengesloten blok af te nemen.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIAL — Figma 658:967 -->
+<section id="testimonial" class="section">
+  <div class="container">
+    <div class="testimonial-layout">
+      <div class="testimonial-img">
+        <img src="images/maria.png" alt="Marieke en Lena" loading="lazy">
+      </div>
+      <div class="testimonial-content">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48.179 7.90408C48.8436 6.08264 46.9943 3.53314 44.2444 2.53109C40.7994 1.2779 37.1971 2.40425 35.4264 7.27749L30.6267 20.4664C30.3122 21.3289 30.713 22.1864 31.6085 22.5111C32.471 22.8257 33.3284 22.4249 33.643 21.5623L38.468 8.30744C39.4447 5.62348 41.086 4.72037 43.1079 5.45605C45.561 6.34901 45.1373 8.3328 46.3956 8.79197C47.0577 9.03297 47.8441 8.83256 48.1815 7.90408" fill="white"/>
+<path d="M24.3937 1.33376C23.3815 -0.320252 20.2358 -0.464851 17.7396 1.06232C14.6117 2.97508 13.2494 6.49365 15.9511 10.9153L23.2699 22.8917C23.7468 23.673 24.6677 23.8963 25.482 23.399C26.2633 22.9221 26.4866 22.0012 26.0096 21.2174L18.6554 9.18268C17.1663 6.7448 17.4834 4.89799 19.32 3.77672C21.5474 2.41698 22.8361 3.98474 23.9776 3.28457C24.5789 2.91673 24.9112 2.17598 24.3962 1.33376" fill="white"/>
+<path d="M4.42631 15.8317C2.50086 15.5907 0.428273 17.9601 0.0655077 20.8648C-0.39112 24.5026 1.5115 27.7624 6.65364 28.4067L20.5782 30.1521C21.489 30.2662 22.2373 29.6853 22.354 28.7391C22.4682 27.8283 21.8872 27.0825 20.9765 26.9684L6.98089 25.2154C4.14725 24.8603 2.90167 23.4599 3.16804 21.3265C3.49275 18.7364 5.52221 18.7085 5.68964 17.3792C5.77843 16.679 5.40552 15.9586 4.42631 15.8343" fill="white"/>
+<path d="M3.31281 40.482C1.92517 41.8367 2.48327 44.9341 4.52795 47.0295C7.0876 49.6551 10.8218 50.2006 14.5332 46.5805L24.579 36.7808C25.236 36.1415 25.2462 35.1927 24.5815 34.5103C23.9422 33.8533 22.9935 33.8431 22.3364 34.4824L12.2399 44.3303C10.1952 46.3243 8.32303 46.4258 6.82124 44.8859C4.9998 43.0188 6.2403 41.413 5.30675 40.4541C4.81461 39.9493 4.01805 39.7894 3.31281 40.4795" fill="white"/>
+<path d="M21.8898 56.7228C22.0826 58.6533 24.8553 60.1475 27.7676 59.8558C31.4156 59.4905 34.1706 56.9105 33.6556 51.7532L32.2578 37.788C32.1665 36.8747 31.4333 36.276 30.4846 36.3699C29.5713 36.4612 28.9726 37.1944 29.0639 38.1076L30.4693 52.1413C30.7535 54.9826 29.6652 56.5097 27.5266 56.7228C24.9289 56.9841 24.4495 55.0105 23.1151 55.1449C22.4124 55.2159 21.7909 55.7385 21.8898 56.7203" fill="white"/>
+<path d="M46.1694 52.3238C47.7981 53.3766 50.6951 52.1412 52.2832 49.683C54.272 46.6033 53.9727 42.8412 49.6195 40.0278L37.8309 32.4123C37.0597 31.9151 36.1338 32.1155 35.6188 32.9146C35.1216 33.6858 35.3195 34.6117 36.0906 35.1089L47.9401 42.7625C50.34 44.3125 50.855 46.1137 49.688 47.9199C48.2725 50.1117 46.4307 49.2593 45.7052 50.3831C45.3221 50.9768 45.345 51.786 46.1745 52.3238" fill="white"/>
+<path d="M57.8697 30.5984C59.7089 29.982 60.5486 26.9454 59.6176 24.1701C58.4507 20.6947 55.3228 18.5841 50.4089 20.233L37.1058 24.7029C36.2357 24.9946 35.8146 25.8419 36.119 26.745C36.4108 27.6151 37.2606 28.0363 38.1282 27.7445L51.4998 23.2518C54.2066 22.3411 55.9367 23.0641 56.6216 25.1012C57.4537 27.5746 55.6373 28.4827 56.0635 29.7511C56.2893 30.4209 56.9362 30.9079 57.8723 30.5934" fill="white"/>
+</svg>
+        <div class="stars" aria-label="5 sterren">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16l-6.2 4.3 2.4-7.4L0 8.4h7.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16l-6.2 4.3 2.4-7.4L0 8.4h7.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16l-6.2 4.3 2.4-7.4L0 8.4h7.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16l-6.2 4.3 2.4-7.4L0 8.4h7.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16l-6.2 4.3 2.4-7.4L0 8.4h7.6z"/></svg>
+        </div>
+        <blockquote>"Mijn dochter raakt helemaal ontspannen en ik voel me ook veel rustiger. Dit uur samen is kostbaar."</blockquote>
+        <div class="author">
+          <p class="name">Marieke</p>
+          <p class="role">Moeder van Lena</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA NIEUWSBRIEF — Figma 658:985 -->
+<section id="cta" class="section" style="background:var(--navy)">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Meld je aan voor een les</h2>
+      <p class="body-md">Vul je e-mailadres in en je ontvangt direct een bevestiging. Joya neemt contact met je op.</p>
+    </div>
+    <form class="form-row" onsubmit="handleAanmelding(event)">
+      <input id="cta-input" class="email-input" type="email" placeholder="Voer je e-mailadres in" required>
+      <button id="cta-btn" type="submit" class="btn btn-wf">Aanmelden</button>
+    </form>
+    <p class="body-xs" style="opacity:.6">Je e-mailadres wordt alleen gebruikt om contact met je op te nemen over de lessen</p>
+  </div>
+</section>
+
+<!-- CONTACT — Figma 658:996 -->
+<section id="contact" class="section" style="background:var(--coral)">
+  <div class="container">
+    <div class="contact-row">
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="12" width="36" height="24" rx="2" stroke="white" stroke-width="2"/>
+          <path d="M6 15l18 12 18-12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="contact-info">
+          <h3 class="h4">E-mail</h3>
+          <p class="body-rg">Neem contact op voor vragen of boek je eerste les direct</p>
+          <a href="/cdn-cgi/l/email-protection#ddb7b8b3abb4bab29db5b2a9b0bcb4b1f3beb2b0"><strong><span class="__cf_email__" data-cfemail="214b444f5748464e61494e554c40484d0f424e4c">[email&#160;protected]</span></strong></a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13,19.5a.5.5,0,0,1-.5.5h-1a.5.5,0,0,1,0-1h1A.5.5,0,0,1,13,19.5Z"/>
+          <path d="M16.5,2h-9A2.5026,2.5026,0,0,0,5,4.5v15A2.5023,2.5023,0,0,0,7.5,22h9A2.5023,2.5023,0,0,0,19,19.5V4.5A2.5026,2.5026,0,0,0,16.5,2ZM13.6914,3l-.5,1H10.8086l-.5-1ZM18,19.5A1.5017,1.5017,0,0,1,16.5,21h-9A1.5017,1.5017,0,0,1,6,19.5V4.5A1.5017,1.5017,0,0,1,7.5,3H9.1909l.8618,1.7236A.5.5,0,0,0,10.5,5h3a.5.5,0,0,0,.4473-.2764L14.8091,3H16.5A1.5017,1.5017,0,0,1,18,4.5Z"/>
+        </svg>
+        <div class="contact-info">
+          <h3 class="h4">Telefoon</h3>
+          <p class="body-rg">Bel of stuur een berichtje, we reageren snel</p>
+          <a href="tel:0648050470">06 480 50 470</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 6C16 6 10 12 10 20C10 30 24 42 24 42C24 42 38 30 38 20C38 12 32 6 24 6Z" stroke="white" stroke-width="2"/>
+          <circle cx="24" cy="20" r="5" stroke="white" stroke-width="2"/>
+        </svg>
+        <div class="contact-info">
+          <h3 class="h4">Locatie</h3>
+          <p class="body-rg">Centraal gelegen in Amsterdam, goed bereikbaar</p>
+          <a href="https://maps.google.com/?q=J.J.+Cremerplein+27a+Amsterdam" target="_blank" rel="noopener">J.J. Cremerplein 27a,<br>1054 TH Amsterdam</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER — statisch, helemaal onderaan
+     Figma node: 658:1020
+════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="inner">
+    <div class="footer-top">
+      <div class="footer-left">
+        <a href="#" class="footer-logo" aria-label="Joya Kinderyoga home">
+          <svg width="111" height="46" viewBox="0 0 111 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M36.3185 6.07066C36.8195 4.67171 35.4254 2.71357 33.3525 1.94395C30.7555 0.981447 28.04 1.84654 26.7053 5.5894L23.0871 15.7191C22.85 16.3816 23.1522 17.0401 23.8272 17.2895C24.4774 17.5311 25.1238 17.2233 25.3609 16.5608L28.9981 6.38045C29.7344 4.31905 30.9716 3.62542 32.4957 4.19046C34.345 4.87629 34.0256 6.39994 34.9741 6.7526C35.4732 6.93769 36.066 6.78377 36.3204 6.07066" fill="white"/>
+<path d="M18.3885 1.02439C17.6255 -0.245968 15.2542 -0.357027 13.3725 0.815908C11.0146 2.285 9.98769 4.98742 12.0243 8.38348L17.5413 17.5819C17.9009 18.182 18.595 18.3534 19.2089 17.9715C19.7979 17.6052 19.9662 16.898 19.6066 16.2959L14.0628 7.05272C12.9403 5.18032 13.1793 3.76188 14.5639 2.90069C16.2429 1.85635 17.2143 3.06046 18.0749 2.5227C18.5281 2.24019 18.7786 1.67125 18.3904 1.02439" fill="white"/>
+<path d="M3.33665 12.1595C1.88521 11.9744 0.322842 13.7942 0.0493813 16.0251C-0.294836 18.8191 1.1394 21.3228 5.01567 21.8177L15.5124 23.1582C16.1989 23.2458 16.763 22.7997 16.851 22.0729C16.937 21.3734 16.4991 20.8006 15.8126 20.7129L5.26236 19.3666C3.1263 19.0938 2.18735 18.0183 2.38814 16.3797C2.63292 14.3904 4.16277 14.3689 4.28899 13.348C4.35592 12.8102 4.07481 12.2569 3.33665 12.1614" fill="white"/>
+<path d="M2.49718 31.092C1.45114 32.1325 1.87185 34.5115 3.41317 36.1208C5.3427 38.1374 8.15763 38.5563 10.9553 35.776L18.5281 28.2493C19.0234 27.7583 19.0311 27.0296 18.53 26.5055C18.0481 26.0009 17.3329 25.9931 16.8376 26.4841L9.22661 34.0477C7.68529 35.5792 6.274 35.6571 5.14191 34.4744C3.76887 33.0404 4.70399 31.8071 4.00026 31.0706C3.62927 30.6829 3.0288 30.5601 2.49718 31.0901" fill="white"/>
+<path d="M16.501 43.5657C16.6463 45.0484 18.7365 46.196 20.9318 45.9719C23.6818 45.6914 25.7585 43.7099 25.3703 39.7488L24.3166 29.0228C24.2478 28.3214 23.6951 27.8616 22.9799 27.9337C22.2915 28.0038 21.8402 28.5669 21.909 29.2683L22.9685 40.0469C23.1826 42.2291 22.3623 43.402 20.7502 43.5657C18.792 43.7664 18.4305 42.2505 17.4247 42.3538C16.8949 42.4083 16.4264 42.8097 16.501 43.5637" fill="white"/>
+<path d="M34.8038 40.1872C36.0315 40.9958 38.2154 40.0469 39.4125 38.1589C40.9118 35.7936 40.6861 32.9041 37.4046 30.7433L28.5181 24.8942C27.9367 24.5123 27.2387 24.6663 26.8505 25.28C26.4757 25.8723 26.6249 26.5835 27.2062 26.9654L36.1386 32.8437C37.9477 34.0342 38.3359 35.4175 37.4562 36.8048C36.3892 38.4882 35.0008 37.8335 34.4539 38.6967C34.1651 39.1526 34.1823 39.7741 34.8077 40.1872" fill="white"/>
+<path d="M43.6235 23.5011C45.01 23.0276 45.6429 20.6954 44.9411 18.5638C44.0615 15.8945 41.7036 14.2735 37.9994 15.5399L27.9712 18.973C27.3153 19.1971 26.9979 19.8478 27.2273 20.5415C27.4473 21.2098 28.0879 21.5332 28.7419 21.3091L38.8217 17.8585C40.8622 17.159 42.1664 17.7143 42.6827 19.2789C43.3099 21.1786 41.9407 21.8761 42.262 22.8503C42.4322 23.3647 42.9198 23.7388 43.6254 23.4972" fill="white"/>
+<path d="M99.7503 25.0818L102.967 17.2006L106.183 25.0818H99.7503ZM110.834 29.9294L104.959 15.9283C104.481 14.7358 104.03 14.276 103.045 14.276C102.06 14.276 101.609 14.7358 101.131 15.9283L95.2296 30.0113C94.8299 30.9855 95.2296 31.7453 96.0806 31.7707C96.8245 31.8252 97.1706 31.418 97.49 30.6328L98.8458 27.2738H107.059L108.415 30.6055C108.734 31.418 109.239 31.8233 109.956 31.7707C110.834 31.7434 111.259 30.9855 110.834 29.9294ZM94.7554 14.276C94.1166 14.276 93.7724 14.6559 93.3995 15.2775L88.7488 23.3205L84.0445 15.1684C83.7519 14.6813 83.4325 14.2741 82.7957 14.2741C81.8128 14.2741 81.2812 15.221 81.8664 16.1971L87.5019 25.8651V30.551C87.5019 31.2543 88.0068 31.7707 88.6991 31.7707C89.3913 31.7707 89.921 31.2563 89.921 30.551V25.8105L95.6618 16.0607C96.1667 15.1937 95.7689 14.2741 94.7573 14.2741M78.5772 23.075C78.5772 26.6776 75.812 29.6294 72.3832 29.6294C68.9544 29.6294 66.216 26.6775 66.216 23.0477C66.216 19.4178 68.9812 16.4387 72.3832 16.4387C75.7852 16.4387 78.5772 19.4178 78.5772 23.075ZM81.1014 23.075C81.1014 18.091 77.1946 14.0286 72.3832 14.0286C67.5718 14.0286 63.6649 18.0637 63.6649 23.0477C63.6649 28.0317 67.5718 32.0395 72.3832 32.0395C77.1946 32.0395 81.1014 28.0317 81.1014 23.075ZM51.4414 29.1968C51.4414 30.6854 53.4092 32.0415 55.6141 32.0415C58.3793 32.0415 60.6377 30.2821 60.6377 26.2996V15.521C60.6377 14.8177 60.1329 14.3033 59.4158 14.3033C58.6986 14.3033 58.2187 14.8177 58.2187 15.521V26.3541C58.2187 28.548 57.2893 29.6313 55.6676 29.6313C53.6999 29.6313 53.4876 28.0882 52.4779 28.0882C51.9463 28.0882 51.4414 28.4408 51.4414 29.1988" fill="white"/>
+</svg>
+        </a>
+        <nav class="footer-links" aria-label="Footer navigatie">
+          <a href="#wat">Over Joya</a>
+          <a href="#lessen">Lessen &amp; Prijzen</a>
+          <a href="#cta">Aanmelden</a>
+          <a href="#contact">Contact</a>
+          <a href="#cta">Volgen</a>
+        </nav>
+      </div>
+      <div class="footer-right">
+        <p style="font-size:16px;font-weight:600">Abonneer</p>
+        <div class="footer-form">
+          <input class="email-input" type="email" placeholder="Voer je e-mailadres in">
+          <button class="btn btn-wg" onclick="submitFooter(this)">Verzenden</button>
+        </div>
+        <p class="body-xs" style="opacity:.6">Door in te schrijven ga je akkoord met ons <a href="#" style="opacity:1;text-decoration:underline">privacybeleid</a></p>
+      </div>
+    </div>
+    <div class="footer-credits">
+      <nav class="footer-legal" aria-label="Juridische links">
+        <a href="privacybeleid.html" target="_blank">Privacybeleid</a>
+        <a href="gebruiksvoorwaarden.html" target="_blank">Gebruiksvoorwaarden</a>
+        <a href="cookies.html" target="_blank">Cookie-instellingen</a>
+      </nav>
+      <p class="footer-copy">© 2026 Joya Kinderyoga. Alle rechten voorbehouden</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded', false);
+  }
+
+  function handleAanmelding(e) {
+    e.preventDefault();
+    var email = document.getElementById('cta-input').value;
+    var subject = encodeURIComponent('Aanmelding Joya Kinderyoga');
+    var body = encodeURIComponent('Hallo Joya,\n\nIk wil me graag aanmelden voor een les.\n\nMijn e-mailadres: ' + email + '\n\nMet vriendelijke groet');
+    window.location.href = 'mailto:jenvigo@hotmail.com?subject=' + subject + '&body=' + body;
+    var btn = document.getElementById('cta-btn');
+    btn.textContent = 'Verstuurd ✓';
+    btn.disabled = true;
+    btn.style.background = '#2a9d8f';
+    btn.style.borderColor = '#2a9d8f';
+    document.getElementById('cta-input').value = '';
+  }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // Hamburger menu
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function() {
+      var isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    // Sluit bij klik buiten menu
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      }
+    });
+
+    // Tab lessen
+    document.querySelectorAll('.tab-item').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tab.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
+          t.classList.remove('active');
+        });
+        tab.classList.add('active');
+      });
+    });
+
+    // Nieuwsbrief formulier
+    var ctaForm = document.querySelector('#cta form');
+    if (ctaForm) {
+      ctaForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = ctaForm.querySelector('button[type="submit"]');
+        var inp = ctaForm.querySelector('input[type="email"]');
+        btn.textContent = 'Verstuurd ✓';
+        btn.disabled = true;
+        btn.style.background = '#2a9d8f';
+        btn.style.borderColor = '#2a9d8f';
+        if (inp) inp.value = '';
+      });
+    }
+
+    // Footer formulier
+    var footerBtn = document.que
