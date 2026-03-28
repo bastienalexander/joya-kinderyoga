@@ -35,12 +35,12 @@
     }
 
     /* ─── TYPOGRAPHY ─── */
-    .vr { font-family: 'Varela Round', sans-serif; }
-    h1,.h1 { font-family:'Varela Round',sans-serif; font-size:72px; line-height:1.2; }
-    h2,.h2 { font-family:'Varela Round',sans-serif; font-size:52px; line-height:1.2; }
-    .h4 { font-family:'Varela Round',sans-serif; font-size:36px; line-height:1.4; }
-    .h5 { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; }
-    .h6 { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.4; }
+    .vr { font-family: 'Varela Round', sans-serif; font-weight: 400; }
+    h1,.h1 { font-family:'Varela Round',sans-serif; font-size:72px; line-height:1.2; font-weight:400; }
+    h2,.h2 { font-family:'Varela Round',sans-serif; font-size:52px; line-height:1.2; font-weight:400; }
+    .h4 { font-family:'Varela Round',sans-serif; font-size:36px; line-height:1.4; font-weight:400; }
+    .h5 { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; font-weight:400; }
+    .h6 { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.4; font-weight:400; }
     .body-md { font-size:18px; line-height:1.6; }
     .body-rg { font-size:16px; line-height:1.6; }
     .body-sm { font-size:14px; line-height:1.6; }
@@ -157,7 +157,7 @@
     }
     .info-item svg { opacity:.8; }
     .info-label { font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
-    .info-value { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.3; }
+    .info-value { font-family:'Varela Round',sans-serif; font-size:22px; line-height:1.3; font-weight:400; }
     .info-divider { width:1px; background:rgba(255,255,255,.2); align-self:stretch; }
 
     /* ─── TARIEVEN ─── */
@@ -181,10 +181,8 @@
     .tarief-prijs { font-weight:600; white-space:nowrap; flex-shrink:0; }
 
     @media (max-width:900px) {
-      .info-bar { grid-template-columns:1fr 1fr; }
-      .info-divider:nth-child(2) { display:none; }
-      .info-divider:nth-child(4) { display:none; }
-      .info-divider:nth-child(6) { width:100%; height:1px; grid-column:1/-1; }
+      .info-bar { grid-template-columns:1fr; }
+      .info-divider { width:100%; height:1px; }
       .tarief-grid { grid-template-columns:1fr; }
     }
 
@@ -196,7 +194,7 @@
     .testimonial-content { display:flex; flex-direction:column; gap:32px; }
     .stars { display:flex; gap:4px; }
     .stars svg { width:20px; height:20px; fill:#fff; }
-    blockquote { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; }
+    blockquote { font-family:'Varela Round',sans-serif; font-size:28px; line-height:1.4; font-weight:400; }
     .author .name { font-size:16px; font-weight:600; }
     .author .role { font-size:16px; opacity:.75; }
 
@@ -225,27 +223,22 @@
     ════════════════════════════════════ */
     footer.site-footer {
       background:var(--teal);
-      padding:80px var(--pad) 0;
+      padding:0 var(--pad);
+      height:72px;
+      display:flex; align-items:center;
     }
     footer.site-footer .inner {
-      max-width:1280px; margin:0 auto;
-      display:flex; flex-direction:column; gap:80px;
+      max-width:1280px; margin:0 auto; width:100%;
+      display:flex; align-items:center; justify-content:space-between;
     }
-    .footer-top { display:flex; justify-content:space-between; align-items:flex-start; gap:48px; }
-    .footer-left { display:flex; flex-direction:column; gap:32px; flex:1; }
     .footer-logo { line-height:0; }
-    .footer-logo svg { height:41px; width:auto; }
+    .footer-logo svg { height:40px; width:auto; }
     .footer-links { display:flex; gap:32px; flex-wrap:wrap; font-size:14px; font-weight:600; }
-    .footer-right { display:flex; flex-direction:column; gap:16px; width:400px; flex-shrink:0; }
-    .footer-form { display:flex; gap:16px; }
-    .footer-credits {
-      border-top:1px solid rgba(255,255,255,.2);
-      padding:32px 0;
-      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    .footer-links a { color:#fff; }
+    @media (max-width:900px) {
+      footer.site-footer { height:auto; padding:24px; }
+      footer.site-footer .inner { flex-direction:column; gap:24px; align-items:flex-start; }
     }
-    .footer-legal { display:flex; gap:24px; }
-    .footer-legal a { font-size:14px; text-decoration:underline; }
-    .footer-copy { font-size:14px; }
 
     /* ─── Responsive ─── */
     /* ─── HAMBURGER ─── */
@@ -640,7 +633,7 @@
         <div class="contact-info">
           <h3 class="h4">E-mail</h3>
           <p class="body-rg">Neem contact op voor vragen of boek je eerste les direct</p>
-          <a href="/cdn-cgi/l/email-protection#ddb7b8b3abb4bab29db5b2a9b0bcb4b1f3beb2b0"><strong><span class="__cf_email__" data-cfemail="214b444f5748464e61494e554c40484d0f424e4c">[email&#160;protected]</span></strong></a>
+          <a href="mailto:jenvigo@hotmail.com"><strong>jenvigo@hotmail.com</strong></a>
         </div>
       </div>
       <div class="contact-item">
@@ -675,49 +668,20 @@
 ════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="inner">
-    <div class="footer-top">
-      <div class="footer-left">
-        <a href="#" class="footer-logo" aria-label="Joya Kinderyoga home">
-          <svg width="111" height="46" viewBox="0 0 111 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M36.3185 6.07066C36.8195 4.67171 35.4254 2.71357 33.3525 1.94395C30.7555 0.981447 28.04 1.84654 26.7053 5.5894L23.0871 15.7191C22.85 16.3816 23.1522 17.0401 23.8272 17.2895C24.4774 17.5311 25.1238 17.2233 25.3609 16.5608L28.9981 6.38045C29.7344 4.31905 30.9716 3.62542 32.4957 4.19046C34.345 4.87629 34.0256 6.39994 34.9741 6.7526C35.4732 6.93769 36.066 6.78377 36.3204 6.07066" fill="white"/>
-<path d="M18.3885 1.02439C17.6255 -0.245968 15.2542 -0.357027 13.3725 0.815908C11.0146 2.285 9.98769 4.98742 12.0243 8.38348L17.5413 17.5819C17.9009 18.182 18.595 18.3534 19.2089 17.9715C19.7979 17.6052 19.9662 16.898 19.6066 16.2959L14.0628 7.05272C12.9403 5.18032 13.1793 3.76188 14.5639 2.90069C16.2429 1.85635 17.2143 3.06046 18.0749 2.5227C18.5281 2.24019 18.7786 1.67125 18.3904 1.02439" fill="white"/>
-<path d="M3.33665 12.1595C1.88521 11.9744 0.322842 13.7942 0.0493813 16.0251C-0.294836 18.8191 1.1394 21.3228 5.01567 21.8177L15.5124 23.1582C16.1989 23.2458 16.763 22.7997 16.851 22.0729C16.937 21.3734 16.4991 20.8006 15.8126 20.7129L5.26236 19.3666C3.1263 19.0938 2.18735 18.0183 2.38814 16.3797C2.63292 14.3904 4.16277 14.3689 4.28899 13.348C4.35592 12.8102 4.07481 12.2569 3.33665 12.1614" fill="white"/>
-<path d="M2.49718 31.092C1.45114 32.1325 1.87185 34.5115 3.41317 36.1208C5.3427 38.1374 8.15763 38.5563 10.9553 35.776L18.5281 28.2493C19.0234 27.7583 19.0311 27.0296 18.53 26.5055C18.0481 26.0009 17.3329 25.9931 16.8376 26.4841L9.22661 34.0477C7.68529 35.5792 6.274 35.6571 5.14191 34.4744C3.76887 33.0404 4.70399 31.8071 4.00026 31.0706C3.62927 30.6829 3.0288 30.5601 2.49718 31.0901" fill="white"/>
-<path d="M16.501 43.5657C16.6463 45.0484 18.7365 46.196 20.9318 45.9719C23.6818 45.6914 25.7585 43.7099 25.3703 39.7488L24.3166 29.0228C24.2478 28.3214 23.6951 27.8616 22.9799 27.9337C22.2915 28.0038 21.8402 28.5669 21.909 29.2683L22.9685 40.0469C23.1826 42.2291 22.3623 43.402 20.7502 43.5657C18.792 43.7664 18.4305 42.2505 17.4247 42.3538C16.8949 42.4083 16.4264 42.8097 16.501 43.5637" fill="white"/>
-<path d="M34.8038 40.1872C36.0315 40.9958 38.2154 40.0469 39.4125 38.1589C40.9118 35.7936 40.6861 32.9041 37.4046 30.7433L28.5181 24.8942C27.9367 24.5123 27.2387 24.6663 26.8505 25.28C26.4757 25.8723 26.6249 26.5835 27.2062 26.9654L36.1386 32.8437C37.9477 34.0342 38.3359 35.4175 37.4562 36.8048C36.3892 38.4882 35.0008 37.8335 34.4539 38.6967C34.1651 39.1526 34.1823 39.7741 34.8077 40.1872" fill="white"/>
-<path d="M43.6235 23.5011C45.01 23.0276 45.6429 20.6954 44.9411 18.5638C44.0615 15.8945 41.7036 14.2735 37.9994 15.5399L27.9712 18.973C27.3153 19.1971 26.9979 19.8478 27.2273 20.5415C27.4473 21.2098 28.0879 21.5332 28.7419 21.3091L38.8217 17.8585C40.8622 17.159 42.1664 17.7143 42.6827 19.2789C43.3099 21.1786 41.9407 21.8761 42.262 22.8503C42.4322 23.3647 42.9198 23.7388 43.6254 23.4972" fill="white"/>
-<path d="M99.7503 25.0818L102.967 17.2006L106.183 25.0818H99.7503ZM110.834 29.9294L104.959 15.9283C104.481 14.7358 104.03 14.276 103.045 14.276C102.06 14.276 101.609 14.7358 101.131 15.9283L95.2296 30.0113C94.8299 30.9855 95.2296 31.7453 96.0806 31.7707C96.8245 31.8252 97.1706 31.418 97.49 30.6328L98.8458 27.2738H107.059L108.415 30.6055C108.734 31.418 109.239 31.8233 109.956 31.7707C110.834 31.7434 111.259 30.9855 110.834 29.9294ZM94.7554 14.276C94.1166 14.276 93.7724 14.6559 93.3995 15.2775L88.7488 23.3205L84.0445 15.1684C83.7519 14.6813 83.4325 14.2741 82.7957 14.2741C81.8128 14.2741 81.2812 15.221 81.8664 16.1971L87.5019 25.8651V30.551C87.5019 31.2543 88.0068 31.7707 88.6991 31.7707C89.3913 31.7707 89.921 31.2563 89.921 30.551V25.8105L95.6618 16.0607C96.1667 15.1937 95.7689 14.2741 94.7573 14.2741M78.5772 23.075C78.5772 26.6776 75.812 29.6294 72.3832 29.6294C68.9544 29.6294 66.216 26.6775 66.216 23.0477C66.216 19.4178 68.9812 16.4387 72.3832 16.4387C75.7852 16.4387 78.5772 19.4178 78.5772 23.075ZM81.1014 23.075C81.1014 18.091 77.1946 14.0286 72.3832 14.0286C67.5718 14.0286 63.6649 18.0637 63.6649 23.0477C63.6649 28.0317 67.5718 32.0395 72.3832 32.0395C77.1946 32.0395 81.1014 28.0317 81.1014 23.075ZM51.4414 29.1968C51.4414 30.6854 53.4092 32.0415 55.6141 32.0415C58.3793 32.0415 60.6377 30.2821 60.6377 26.2996V15.521C60.6377 14.8177 60.1329 14.3033 59.4158 14.3033C58.6986 14.3033 58.2187 14.8177 58.2187 15.521V26.3541C58.2187 28.548 57.2893 29.6313 55.6676 29.6313C53.6999 29.6313 53.4876 28.0882 52.4779 28.0882C51.9463 28.0882 51.4414 28.4408 51.4414 29.1988" fill="white"/>
-</svg>
-        </a>
-        <nav class="footer-links" aria-label="Footer navigatie">
-          <a href="#wat">Over Joya</a>
-          <a href="#lessen">Lessen &amp; Prijzen</a>
-          <a href="#cta">Aanmelden</a>
-          <a href="#contact">Contact</a>
-          <a href="#cta">Volgen</a>
-        </nav>
-      </div>
-      <div class="footer-right">
-        <p style="font-size:16px;font-weight:600">Abonneer</p>
-        <div class="footer-form">
-          <input class="email-input" type="email" placeholder="Voer je e-mailadres in">
-          <button class="btn btn-wg" onclick="submitFooter(this)">Verzenden</button>
-        </div>
-        <p class="body-xs" style="opacity:.6">Door in te schrijven ga je akkoord met ons <a href="#" style="opacity:1;text-decoration:underline">privacybeleid</a></p>
-      </div>
-    </div>
-    <div class="footer-credits">
-      <nav class="footer-legal" aria-label="Juridische links">
-        <a href="privacybeleid.html" target="_blank">Privacybeleid</a>
-        <a href="gebruiksvoorwaarden.html" target="_blank">Gebruiksvoorwaarden</a>
-        <a href="cookies.html" target="_blank">Cookie-instellingen</a>
-      </nav>
-      <p class="footer-copy">© 2026 Joya Kinderyoga. Alle rechten voorbehouden</p>
-    </div>
+    <a href="#" class="footer-logo" aria-label="Joya Kinderyoga home">
+      <svg width="111" height="46" viewBox="0 0 111 46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36.3185 6.07066C36.8195 4.67171 35.4254 2.71357 33.3525 1.94395C30.7555 0.981447 28.04 1.84654 26.7053 5.5894L23.0871 15.7191C22.85 16.3816 23.1522 17.0401 23.8272 17.2895C24.4774 17.5311 25.1238 17.2233 25.3609 16.5608L28.9981 6.38045C29.7344 4.31905 30.9716 3.62542 32.4957 4.19046C34.345 4.87629 34.0256 6.39994 34.9741 6.7526C35.4732 6.93769 36.066 6.78377 36.3204 6.07066" fill="white"/><path d="M18.3885 1.02439C17.6255 -0.245968 15.2542 -0.357027 13.3725 0.815908C11.0146 2.285 9.98769 4.98742 12.0243 8.38348L17.5413 17.5819C17.9009 18.182 18.595 18.3534 19.2089 17.9715C19.7979 17.6052 19.9662 16.898 19.6066 16.2959L14.0628 7.05272C12.9403 5.18032 13.1793 3.76188 14.5639 2.90069C16.2429 1.85635 17.2143 3.06046 18.0749 2.5227C18.5281 2.24019 18.7786 1.67125 18.3904 1.02439" fill="white"/><path d="M3.33665 12.1595C1.88521 11.9744 0.322842 13.7942 0.0493813 16.0251C-0.294836 18.8191 1.1394 21.3228 5.01567 21.8177L15.5124 23.1582C16.1989 23.2458 16.763 22.7997 16.851 22.0729C16.937 21.3734 16.4991 20.8006 15.8126 20.7129L5.26236 19.3666C3.1263 19.0938 2.18735 18.0183 2.38814 16.3797C2.63292 14.3904 4.16277 14.3689 4.28899 13.348C4.35592 12.8102 4.07481 12.2569 3.33665 12.1614" fill="white"/><path d="M2.49718 31.092C1.45114 32.1325 1.87185 34.5115 3.41317 36.1208C5.3427 38.1374 8.15763 38.5563 10.9553 35.776L18.5281 28.2493C19.0234 27.7583 19.0311 27.0296 18.53 26.5055C18.0481 26.0009 17.3329 25.9931 16.8376 26.4841L9.22661 34.0477C7.68529 35.5792 6.274 35.6571 5.14191 34.4744C3.76887 33.0404 4.70399 31.8071 4.00026 31.0706C3.62927 30.6829 3.0288 30.5601 2.49718 31.0901" fill="white"/><path d="M16.501 43.5657C16.6463 45.0484 18.7365 46.196 20.9318 45.9719C23.6818 45.6914 25.7585 43.7099 25.3703 39.7488L24.3166 29.0228C24.2478 28.3214 23.6951 27.8616 22.9799 27.9337C22.2915 28.0038 21.8402 28.5669 21.909 29.2683L22.9685 40.0469C23.1826 42.2291 22.3623 43.402 20.7502 43.5657C18.792 43.7664 18.4305 42.2505 17.4247 42.3538C16.8949 42.4083 16.4264 42.8097 16.501 43.5637" fill="white"/><path d="M34.8038 40.1872C36.0315 40.9958 38.2154 40.0469 39.4125 38.1589C40.9118 35.7936 40.6861 32.9041 37.4046 30.7433L28.5181 24.8942C27.9367 24.5123 27.2387 24.6663 26.8505 25.28C26.4757 25.8723 26.6249 26.5835 27.2062 26.9654L36.1386 32.8437C37.9477 34.0342 38.3359 35.4175 37.4562 36.8048C36.3892 38.4882 35.0008 37.8335 34.4539 38.6967C34.1651 39.1526 34.1823 39.7741 34.8077 40.1872" fill="white"/><path d="M43.6235 23.5011C45.01 23.0276 45.6429 20.6954 44.9411 18.5638C44.0615 15.8945 41.7036 14.2735 37.9994 15.5399L27.9712 18.973C27.3153 19.1971 26.9979 19.8478 27.2273 20.5415C27.4473 21.2098 28.0879 21.5332 28.7419 21.3091L38.8217 17.8585C40.8622 17.159 42.1664 17.7143 42.6827 19.2789C43.3099 21.1786 41.9407 21.8761 42.262 22.8503C42.4322 23.3647 42.9198 23.7388 43.6254 23.4972" fill="white"/><path d="M99.7503 25.0818L102.967 17.2006L106.183 25.0818H99.7503ZM110.834 29.9294L104.959 15.9283C104.481 14.7358 104.03 14.276 103.045 14.276C102.06 14.276 101.609 14.7358 101.131 15.9283L95.2296 30.0113C94.8299 30.9855 95.2296 31.7453 96.0806 31.7707C96.8245 31.8252 97.1706 31.418 97.49 30.6328L98.8458 27.2738H107.059L108.415 30.6055C108.734 31.418 109.239 31.8233 109.956 31.7707C110.834 31.7434 111.259 30.9855 110.834 29.9294ZM94.7554 14.276C94.1166 14.276 93.7724 14.6559 93.3995 15.2775L88.7488 23.3205L84.0445 15.1684C83.7519 14.6813 83.4325 14.2741 82.7957 14.2741C81.8128 14.2741 81.2812 15.221 81.8664 16.1971L87.5019 25.8651V30.551C87.5019 31.2543 88.0068 31.7707 88.6991 31.7707C89.3913 31.7707 89.921 31.2563 89.921 30.551V25.8105L95.6618 16.0607C96.1667 15.1937 95.7689 14.2741 94.7573 14.2741M78.5772 23.075C78.5772 26.6776 75.812 29.6294 72.3832 29.6294C68.9544 29.6294 66.216 26.6775 66.216 23.0477C66.216 19.4178 68.9812 16.4387 72.3832 16.4387C75.7852 16.4387 78.5772 19.4178 78.5772 23.075ZM81.1014 23.075C81.1014 18.091 77.1946 14.0286 72.3832 14.0286C67.5718 14.0286 63.6649 18.0637 63.6649 23.0477C63.6649 28.0317 67.5718 32.0395 72.3832 32.0395C77.1946 32.0395 81.1014 28.0317 81.1014 23.075ZM51.4414 29.1968C51.4414 30.6854 53.4092 32.0415 55.6141 32.0415C58.3793 32.0415 60.6377 30.2821 60.6377 26.2996V15.521C60.6377 14.8177 60.1329 14.3033 59.4158 14.3033C58.6986 14.3033 58.2187 14.8177 58.2187 15.521V26.3541C58.2187 28.548 57.2893 29.6313 55.6676 29.6313C53.6999 29.6313 53.4876 28.0882 52.4779 28.0882C51.9463 28.0882 51.4414 28.4408 51.4414 29.1988" fill="white"/></svg>
+    </a>
+    <nav class="footer-links" aria-label="Footer navigatie">
+      <a href="#wat">Over Joya</a>
+      <a href="#lessen">Lessen &amp; Prijzen</a>
+      <a href="#prijzen">Tarieven</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p style="font-size:14px;color:rgba(255,255,255,.7);white-space:nowrap">© 2026 Joya Kinderyoga</p>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function closeMobileMenu() {
     document.getElementById('mobile-menu').classList.remove('open');
     document.getElementById('hamburger').classList.remove('open');
@@ -739,12 +703,6 @@
   }
 </script>
 <script>
-  function activateTab(el) {
-    el.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) { t.classList.remove('active'); });
-    el.classList.add('active');
-  }
-</script>
-<script>
   document.addEventListener('DOMContentLoaded', function() {
 
     // Hamburger menu
@@ -763,6 +721,13 @@
         hamburger.setAttribute('aria-expanded', false);
       }
     });
+
+    // Tab lessen
+    document.querySelectorAll('.tab-item').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tab.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
+          t.classList.remove('active');
+        });
         tab.classList.add('active');
       });
     });
@@ -783,4 +748,22 @@
     }
 
     // Footer formulier
-    var footerBtn = document.que
+    var footerBtn = document.query('.footer-form button');
+    if (footerBtn) {
+      footerBtn.addEventListener('click', function() {
+        footerBtn.textContent = 'Verstuurd ✓';
+        footerBtn.disabled = true;
+      });
+    }
+
+  });
+
+  function activateTab(el) {
+    el.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
