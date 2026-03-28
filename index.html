@@ -243,14 +243,18 @@
     /* ─── Responsive ─── */
     /* ─── HAMBURGER ─── */
     .hamburger {
-      display: none; flex-direction: column; justify-content: center;
-      gap: 5px; width: 32px; height: 32px;
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      gap: 6px; width: 44px; height: 44px;
       background: none; border: none; cursor: pointer; padding: 0; flex-shrink: 0;
     }
-    .hamburger span { display: block; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s, opacity .25s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: #fff; border-radius: 2px;
+      transition: transform .25s, opacity .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     .mobile-menu {
       display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
@@ -688,6 +692,13 @@
     document.getElementById('hamburger').setAttribute('aria-expanded', false);
   }
 
+  function activateTab(el) {
+    el.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    el.classList.add('active');
+  }
+
   function handleAanmelding(e) {
     e.preventDefault();
     var email = document.getElementById('cta-input').value;
@@ -701,69 +712,28 @@
     btn.style.borderColor = '#2a9d8f';
     document.getElementById('cta-input').value = '';
   }
-</script>
-<script>
+
   document.addEventListener('DOMContentLoaded', function() {
 
     // Hamburger menu
     var hamburger = document.getElementById('hamburger');
     var mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
-    // Sluit bij klik buiten menu
-    document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', false);
-      }
-    });
-
-    // Tab lessen
-    document.querySelectorAll('.tab-item').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        tab.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
-          t.classList.remove('active');
-        });
-        tab.classList.add('active');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', function() {
+        var isOpen = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
       });
-    });
-
-    // Nieuwsbrief formulier
-    var ctaForm = document.querySelector('#cta form');
-    if (ctaForm) {
-      ctaForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var btn = ctaForm.querySelector('button[type="submit"]');
-        var inp = ctaForm.querySelector('input[type="email"]');
-        btn.textContent = 'Verstuurd ✓';
-        btn.disabled = true;
-        btn.style.background = '#2a9d8f';
-        btn.style.borderColor = '#2a9d8f';
-        if (inp) inp.value = '';
-      });
-    }
-
-    // Footer formulier
-    var footerBtn = document.query('.footer-form button');
-    if (footerBtn) {
-      footerBtn.addEventListener('click', function() {
-        footerBtn.textContent = 'Verstuurd ✓';
-        footerBtn.disabled = true;
+      document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', false);
+        }
       });
     }
 
   });
-
-  function activateTab(el) {
-    el.closest('.tabs-menu').querySelectorAll('.tab-item').forEach(function(t) {
-      t.classList.remove('active');
-    });
-    el.classList.add('active');
-  }
 </script>
 </body>
 </html>
